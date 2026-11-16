@@ -5,6 +5,6 @@ window.HISHOB_CONFIG = {
   url: "https://tbwfikpjbtmcvavruscn.supabase.co",
   key: "sb_publishable_uJmIN5IyHHqAsiYbp0Tljw_fByEBJCV",
   google: false, // Supabase मध्ये Google provider सुरू केल्यावर true करा
-  owner: "निलेश पोटेकर",   // app चालवणाऱ्याचे नाव (गोपनीयता धोरणात दिसते)
+  owner: "निलेश पोटे",   // app चालवणाऱ्याचे नाव (गोपनीयता धोरणात दिसते)
   contact: "nileshpote47@gmail.com"  // संपर्कासाठी ई-मेल (गोपनीयता धोरणात दिसतो)
 };
