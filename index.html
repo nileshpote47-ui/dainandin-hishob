@@ -499,6 +499,7 @@ function renderSet(){
   '<div class="set"><h2>PIN Lock</h2><p>'+(pin?'PIN सुरू आहे. अ‍ॅप उघडताना PIN विचारला जाईल.':'4 अंकी PIN लावून हिशोब खाजगी ठेवा. PIN फक्त या फोनसाठी असतो.')+'</p>'+
     (pin?'<button class="btn wide" data-act="pin-change">PIN बदला</button><button class="btn wide" data-act="pin-off">PIN बंद करा</button>':'<button class="btn wide" data-act="pin-on">PIN सुरू करा</button>')+'</div>'+
   '<div class="set"><h2>भाषा</h2><p>मराठी</p></div>'+
+  (window.HishobAndroid?'':'<div class="set"><h2>Android app</h2><p>फोनमध्ये app म्हणून install करा.</p><a class="btn wide" style="text-decoration:none;color:var(--ink);display:flex;align-items:center;justify-content:center" href="https://github.com/nileshpote47-ui/dainandin-hishob/releases/latest/download/dainandin-hishob.apk">Android app डाउनलोड करा</a></div>')+
   '<div class="set"><h2>गोपनीयता धोरण</h2><p>तुमची माहिती आणि हिशोब कसा वापरला व सुरक्षित ठेवला जातो.</p><a class="btn wide" style="text-align:center;text-decoration:none;color:var(--ink);display:flex;align-items:center;justify-content:center" href="privacy.html">गोपनीयता धोरण वाचा</a></div>';
 }
 
@@ -511,6 +512,8 @@ function csvFor(list){
     out.push([t.date.split('-').reverse().join('-'),dayName(t.date),TYPE[t.type],t.amount,cell(t.purpose),cell(t.category),bal/100].join(','))}
   return '﻿'+out.join('\r\n')}
 function saveFile(name,data,title){
+  if(window.HishobAndroid){ // Android app: फाईल थेट Downloads मध्ये
+    if(window.HishobAndroid.saveFile(name,data))toast('फाईल Downloads मध्ये सेव्ह झाली ✓');else textBox(title+' — हा मजकूर कॉपी करून ठेवा',data.replace(/^\ufeff/,''));return}
   try{
     const url=URL.createObjectURL(new Blob([data],{type:/\.csv$/.test(name)?'text/csv;charset=utf-8':'application/json'}));
     const a=document.createElement('a');a.href=url;a.download=name;document.body.appendChild(a);a.click();a.remove();

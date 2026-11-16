@@ -1,6 +1,6 @@
 // Offline support: app files come from the network when available, from the cache otherwise.
 // API calls to the server are never cached.
-const CACHE = 'hishob-v2';
+const CACHE = 'hishob-v3';
 const SHELL = ['./', 'index.html', 'privacy.html', 'config.js', 'supabase.js', 'manifest.webmanifest', 'icon.svg', 'icon-192.png'];
 self.addEventListener('install', e => { e.waitUntil(caches.open(CACHE).then(c => c.addAll(SHELL)).then(() => self.skipWaiting())); });
 self.addEventListener('activate', e => {
